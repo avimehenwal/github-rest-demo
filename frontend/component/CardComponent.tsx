@@ -43,67 +43,82 @@ const CardComponent: FC<Props> = (props) => {
           <CircularProgress />
         </Box>
       )}
-      {data && (
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {props.apiURL}
+      {error ? (
+        <>
+          <Typography variant="h6" color="error">
+            Error occoured
           </Typography>
-
-          <Typography variant="h5" sx={{ marginTop: "1rem" }}>
-            {props.heading}
-            {props.user ? null : data.length ? ` - ${data?.length}` : ``}
+          <Typography color="error">
+            {JSON.stringify(error, null, 2)}
           </Typography>
+        </>
+      ) : (
+        data && (
+          <CardContent>
+            <Typography
+              sx={{ fontSize: 14 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              {props.apiURL}
+            </Typography>
 
-          <Typography variant="body2" sx={{ marginTop: "1rem" }}>
-            <List>
-              {props.user ? (
-                <ListItem>
-                  {data && (
-                    <>
-                      <ListItemAvatar>
-                        <Avatar alt="logo" src={data?.avatar_url} />
-                      </ListItemAvatar>
-                      <Link href={data.html_url} variant="body2">
-                        <ListItemText
-                          primary={data.name}
-                          secondary={data.bio}
-                        />
-                      </Link>
-                    </>
-                  )}
-                </ListItem>
-              ) : (
-                <>
-                  {data.length > 0 &&
-                    data?.map((item) => (
-                      <ListItem key={item.id}>
+            <Typography variant="h5" sx={{ marginTop: "1rem" }}>
+              {props.heading}
+              {props.user ? null : data.length ? ` - ${data?.length}` : ``}
+            </Typography>
+
+            <Typography variant="body2" sx={{ marginTop: "1rem" }}>
+              <List>
+                {props.user ? (
+                  <ListItem>
+                    {data && (
+                      <>
                         <ListItemAvatar>
-                          <Avatar
-                            alt="logo"
-                            src={
-                              item?.avatar_url
-                                ? item.avatar_url
-                                : item.owner.avatar_url
-                            }
-                          />
+                          <Avatar alt="logo" src={data?.avatar_url} />
                         </ListItemAvatar>
-                        <Link href={item.url} variant="body2">
+                        <Link href={data.html_url} variant="body2">
                           <ListItemText
-                            primary={
-                              item?.login
-                                ? item?.login
-                                : Object.keys(item.files)[0]
-                            }
-                            secondary={item.description}
+                            primary={data.name}
+                            secondary={data.bio}
                           />
                         </Link>
-                      </ListItem>
-                    ))}
-                </>
-              )}
-            </List>
-          </Typography>
-        </CardContent>
+                      </>
+                    )}
+                  </ListItem>
+                ) : (
+                  <>
+                    {data.length > 0 &&
+                      data?.map((item) => (
+                        <ListItem key={item.id}>
+                          <ListItemAvatar>
+                            <Avatar
+                              alt="logo"
+                              src={
+                                item?.avatar_url
+                                  ? item.avatar_url
+                                  : item.owner.avatar_url
+                              }
+                            />
+                          </ListItemAvatar>
+                          <Link href={item.url} variant="body2">
+                            <ListItemText
+                              primary={
+                                item?.login
+                                  ? item?.login
+                                  : Object.keys(item.files)[0]
+                              }
+                              secondary={item.description}
+                            />
+                          </Link>
+                        </ListItem>
+                      ))}
+                  </>
+                )}
+              </List>
+            </Typography>
+          </CardContent>
+        )
       )}
     </Card>
   );

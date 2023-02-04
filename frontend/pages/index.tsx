@@ -22,8 +22,22 @@ const cardInfo = [
 ];
 
 export default function Home() {
-  const data = process.env.NEXT_PUBLIC_TOKEN;
   const [searchText, setSearchText] = useState<string | null>(`avimehenwal`);
+  const [error, setError] = useState<boolean>(false);
+  const [helperText, setHelperText] = useState<string>("");
+
+  const validateGithubUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const userName = e.target.value;
+    const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (format.test(userName)) {
+      setError(true);
+      setHelperText(`github username cannot contain special characters`);
+    } else {
+      setError(false);
+      setHelperText(``);
+    }
+    setSearchText(userName.trim());
+  };
 
   return (
     <main className={styles.main}>
@@ -35,7 +49,9 @@ export default function Home() {
         label="github username"
         variant="outlined"
         value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
+        onChange={(e) => validateGithubUserName(e)}
+        error={error}
+        helperText={helperText}
         sx={{ margin: "2rem 1rem", width: "40%" }}
       />
 
