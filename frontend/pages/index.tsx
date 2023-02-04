@@ -26,7 +26,9 @@ export default function Home() {
   const [error, setError] = useState<boolean>(false);
   const [helperText, setHelperText] = useState<string>("");
 
-  const validateGithubUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const validateGithubUserName = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const userName = e.target.value;
     const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
     if (format.test(userName)) {

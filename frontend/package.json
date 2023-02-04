@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gh": "next build && next export -o ../docs && touch ../docs/.nojekyll"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

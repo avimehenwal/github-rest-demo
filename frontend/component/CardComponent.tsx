@@ -89,7 +89,7 @@ const CardComponent: FC<Props> = (props) => {
                 ) : (
                   <>
                     {data.length > 0 &&
-                      data?.map((item) => (
+                      data?.map((item: any) => (
                         <ListItem key={item.id}>
                           <ListItemAvatar>
                             <Avatar
