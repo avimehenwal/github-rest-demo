@@ -49,21 +49,28 @@ const CardComponent: FC<Props> = (props) => {
             {props.apiURL}
           </Typography>
 
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" sx={{ marginTop: "1rem" }}>
             {props.heading}
-            {(props.user || ` - ${data.length}`) ?? 0}
+            {props.user ? null : data.length ? ` - ${data?.length}` : ``}
           </Typography>
 
           <Typography variant="body2" sx={{ marginTop: "1rem" }}>
             <List>
-              {data && props.user ? (
+              {props.user ? (
                 <ListItem>
-                  <ListItemAvatar>
-                    <Avatar alt="logo" src={data?.avatar_url} />
-                  </ListItemAvatar>
-                  <Link href={data.html_url} variant="body2">
-                    <ListItemText primary={data.name} secondary={data.bio} />
-                  </Link>
+                  {data && (
+                    <>
+                      <ListItemAvatar>
+                        <Avatar alt="logo" src={data?.avatar_url} />
+                      </ListItemAvatar>
+                      <Link href={data.html_url} variant="body2">
+                        <ListItemText
+                          primary={data.name}
+                          secondary={data.bio}
+                        />
+                      </Link>
+                    </>
+                  )}
                 </ListItem>
               ) : (
                 <>
@@ -95,8 +102,6 @@ const CardComponent: FC<Props> = (props) => {
                 </>
               )}
             </List>
-
-            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
           </Typography>
         </CardContent>
       )}

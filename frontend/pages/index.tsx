@@ -6,17 +6,17 @@ import { useState } from "react";
 const cardInfo = [
   {
     title: "user information",
-    heading: "user",
+    heading: "User Information",
     apiURL: (user: string) => `https://api.github.com/users/${user}`,
   },
   {
     title: "gist information",
-    heading: "gist",
+    heading: "Gists",
     apiURL: (user: string) => `https://api.github.com/users/${user}/gists`,
   },
   {
     title: "organization information",
-    heading: "organization",
+    heading: "Organizations",
     apiURL: (user: string) => `https://api.github.com/user/orgs`,
   },
 ];
@@ -36,6 +36,7 @@ export default function Home() {
         variant="outlined"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
+        sx={{ margin: "2rem 1rem", width: "40%" }}
       />
 
       <Grid container spacing={2}>
@@ -45,7 +46,7 @@ export default function Home() {
               title={cardInfo.title}
               heading={cardInfo.heading}
               apiURL={searchText ? cardInfo.apiURL(searchText) : null}
-              user={cardInfo.heading.includes("user") ? true : false}
+              user={cardInfo.heading.includes("User") ? true : false}
             />
           </Grid>
         ))}
