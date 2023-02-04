@@ -54,7 +54,7 @@ export default function Home() {
         onChange={(e) => validateGithubUserName(e)}
         error={error}
         helperText={helperText}
-        sx={{ margin: "2rem 1rem", width: "40%" }}
+        sx={{ margin: "4rem 1rem", width: "40%" }}
       />
 
       <Grid container spacing={2}>
