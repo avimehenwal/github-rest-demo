@@ -1,4 +1,4 @@
-function countSetsOfThree(numbers: Array<Number>, threshold: number) {
+export function countSetsOfThree(numbers: Array<Number>, threshold: number) {
   numbers.sort();
   const n = numbers.length;
   let count = 0;
@@ -19,6 +19,5 @@ function countSetsOfThree(numbers: Array<Number>, threshold: number) {
     }
   }
   console.log(`below Threshold count = ${belowThresholdCOunt}`);
+  return belowThresholdCOunt;
 }
-
-countSetsOfThree([4, 2, 3, 1, 5], 7);

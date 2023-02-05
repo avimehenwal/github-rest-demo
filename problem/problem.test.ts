@@ -1,10 +1,16 @@
 import { describe, expect, test } from "@jest/globals";
+import { countSetsOfThree } from "./index";
 
-function sum(a, b) {
-  return a + b;
-}
-describe("sum module", () => {
-  test("adds 1 + 2 to equal 3", () => {
-    expect(sum(1, 2)).toBe(3);
+describe("countSetsOfThree function Test suite", () => {
+  test("given base case [1,2,3,4], 7 expect 2", () => {
+    expect(countSetsOfThree([1, 2, 3, 4], 7)).toBe(2);
+  });
+
+  test("given base case unsorted order [4,3,1,2], 7 expect 2", () => {
+    expect(countSetsOfThree([4, 3, 1, 2], 7)).toBe(2);
+  });
+
+  test("alternative case unsorted order [4,3,1,2,90,40], 12 expect 4", () => {
+    expect(countSetsOfThree([4, 3, 1, 2, 90, 40], 12)).toBe(4);
   });
 });
