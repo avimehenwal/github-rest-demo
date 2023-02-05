@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Typography variant="h2" component="h1">
+      <Typography variant="h2" component="h1" data-test={"title"}>
         Github REST API demo
       </Typography>
       <TextField
@@ -54,6 +54,7 @@ export default function Home() {
         onChange={(e) => validateGithubUserName(e)}
         error={error}
         helperText={helperText}
+        data-test={"input-text"}
         sx={{ margin: "4rem 1rem", width: "40%" }}
       />
 

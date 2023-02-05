@@ -21,3 +21,5 @@ export function countSetsOfThree(numbers: Array<Number>, threshold: number) {
   console.log(`below Threshold count = ${belowThresholdCOunt}`);
   return belowThresholdCOunt;
 }
+
+countSetsOfThree([1, 2, 3, 4], 7);

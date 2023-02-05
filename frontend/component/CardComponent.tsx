@@ -32,7 +32,7 @@ const CardComponent: FC<Props> = (props) => {
   const { data, error, isLoading } = useSWR(props.apiURL, fetcher);
 
   return (
-    <Card sx={{ minWidth: `200px`, minHeight: `200px` }}>
+    <Card sx={{ minWidth: `200px`, minHeight: `200px` }} data-test={"card"}>
       {isLoading && (
         <Box
           display="flex"

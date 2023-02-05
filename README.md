@@ -33,7 +33,13 @@ npm install
 npm start
 ```
 
-You can change the input array and threshold values at #24 in `problem/index.ts` file and re-run again
+You can change the input array and threshold values at #25 in `problem/index.ts` file and re-run again
+
+3. Run tests
+
+```
+npm test
+```
 
 #### :v: Get in touch with me
 
