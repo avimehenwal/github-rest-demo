@@ -22,6 +22,13 @@ npm run dev
 ```
 
 4. access frontend application at `http://localhost:3000/`
+5. Run test
+
+```
+npm test:e2e
+```
+
+![test](./frontend-tests.png)
 
 ### Coding Problem 2
 

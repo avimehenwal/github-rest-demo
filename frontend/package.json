@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:e2e": "cypress run --spec cypress/e2e/1-frontend-e2e-test/frontend-smoke.cy.js",
     "gh": "next build && next export -o ../docs && touch ../docs/.nojekyll"
   },
   "dependencies": {
